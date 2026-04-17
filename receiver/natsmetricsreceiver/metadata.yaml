@@ -1,0 +1,299 @@
+display_name: NATS Metrics Receiver
+type: natsmetrics
+
+description: |
+  The NATS Metrics Receiver collects metrics from NATS server monitoring HTTP endpoints
+  (/varz, /connz, /jsz, /accstatz) and converts them to OpenTelemetry metrics.
+
+status:
+  class: receiver
+  stability:
+    development: [metrics]
+  distributions: [contrib]
+  codeowners:
+    active: [daanpersoons]
+
+attributes:
+  account:
+    description: The ID of the NATS account.
+    type: string
+    requirement_level: recommended
+
+metrics:
+  # account scraper (/accstatz)
+  nats.account.bytes.received:
+    enabled: true
+    description: Total bytes received for the account since server start.
+    stability: development
+    unit: By
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+    attributes: [account]
+
+  nats.account.bytes.sent:
+    enabled: true
+    description: Total bytes sent for the account since server start.
+    stability: development
+    unit: By
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+    attributes: [account]
+
+  nats.account.connections:
+    enabled: true
+    description: Number of active client connections for the account.
+    stability: development
+    unit: "{connections}"
+    gauge:
+      value_type: int
+    attributes: [account]
+
+  nats.account.leaf_nodes:
+    enabled: true
+    description: Number of active leaf node connections for the account.
+    stability: development
+    unit: "{leaf_nodes}"
+    gauge:
+      value_type: int
+    attributes: [account]
+
+  nats.account.messages.received:
+    enabled: true
+    description: Total messages received for the account since server start.
+    stability: development
+    unit: "{messages}"
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+    attributes: [account]
+
+  nats.account.messages.sent:
+    enabled: true
+    description: Total messages sent for the account since server start.
+    stability: development
+    unit: "{messages}"
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+    attributes: [account]
+
+  nats.account.slow_consumers:
+    enabled: true
+    description: Number of slow consumer events for the account.
+    stability: development
+    unit: "{consumers}"
+    gauge:
+      value_type: int
+    attributes: [account]
+
+  nats.account.subscriptions:
+    enabled: true
+    description: Number of active subscriptions for the account.
+    stability: development
+    unit: "{subscriptions}"
+    gauge:
+      value_type: int
+    attributes: [account]
+
+  # connection scraper (/connz)
+  nats.connection.count:
+    enabled: true
+    description: Number of active client connections.
+    stability: development
+    unit: "{connections}"
+    gauge:
+      value_type: int
+
+  # jetstream scraper (/jsz)
+  nats.jetstream.api.calls:
+    enabled: true
+    description: Total JetStream API calls since server start.
+    stability: development
+    unit: "{calls}"
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+
+  nats.jetstream.api.errors:
+    enabled: true
+    description: Total JetStream API errors since server start.
+    stability: development
+    unit: "{errors}"
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+
+  nats.jetstream.bytes:
+    enabled: true
+    description: Total bytes stored in JetStream.
+    stability: development
+    unit: By
+    gauge:
+      value_type: int
+
+  nats.jetstream.consumers:
+    enabled: true
+    description: Number of JetStream consumers.
+    stability: development
+    unit: "{consumers}"
+    gauge:
+      value_type: int
+
+  nats.jetstream.memory.reserved:
+    enabled: true
+    description: Memory reserved by JetStream.
+    stability: development
+    unit: By
+    gauge:
+      value_type: int
+
+  nats.jetstream.messages:
+    enabled: true
+    description: Total number of messages stored in JetStream.
+    stability: development
+    unit: "{messages}"
+    gauge:
+      value_type: int
+
+  nats.jetstream.storage.reserved:
+    enabled: true
+    description: Disk storage reserved by JetStream.
+    stability: development
+    unit: By
+    gauge:
+      value_type: int
+
+  nats.jetstream.streams:
+    enabled: true
+    description: Number of JetStream streams.
+    stability: development
+    unit: "{streams}"
+    gauge:
+      value_type: int
+
+  # server scraper (/varz)
+  nats.server.bytes.received:
+    enabled: true
+    description: Total number of bytes received by the NATS server since it started.
+    stability: development
+    unit: By
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+
+  nats.server.bytes.sent:
+    enabled: true
+    description: Total number of bytes sent by the NATS server since it started.
+    stability: development
+    unit: By
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+
+  nats.server.connections:
+    enabled: true
+    description: Number of active client connections to the NATS server.
+    stability: development
+    unit: "{connections}"
+    gauge:
+      value_type: int
+
+  nats.server.connections.total:
+    enabled: true
+    description: Total number of client connections to the NATS server since it started.
+    stability: development
+    unit: "{connections}"
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+
+  nats.server.cpu:
+    enabled: true
+    description: CPU usage of the NATS server process (0-100).
+    stability: development
+    unit: "%"
+    gauge:
+      value_type: double
+
+  nats.server.leaf_nodes:
+    enabled: true
+    description: Number of active leaf node connections to the NATS server.
+    stability: development
+    unit: "{leaf_nodes}"
+    gauge:
+      value_type: int
+
+  nats.server.max_connections:
+    enabled: true
+    description: Maximum number of client connections allowed by the NATS server.
+    stability: development
+    unit: "{connections}"
+    gauge:
+      value_type: int
+
+  nats.server.memory:
+    enabled: true
+    description: Memory used by the NATS server process.
+    stability: development
+    unit: By
+    gauge:
+      value_type: int
+
+  nats.server.messages.received:
+    enabled: true
+    description: Total number of messages received by the NATS server since it started.
+    stability: development
+    unit: "{messages}"
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+
+  nats.server.messages.sent:
+    enabled: true
+    description: Total number of messages sent by the NATS server since it started.
+    stability: development
+    unit: "{messages}"
+    sum:
+      monotonic: true
+      value_type: int
+      aggregation_temporality: cumulative
+
+  nats.server.routes:
+    enabled: true
+    description: Number of active cluster routes on the NATS server.
+    stability: development
+    unit: "{routes}"
+    gauge:
+      value_type: int
+
+  nats.server.slow_consumers:
+    enabled: true
+    description: Number of slow consumer events on the NATS server.
+    stability: development
+    unit: "{consumers}"
+    gauge:
+      value_type: int
+
+  nats.server.subscriptions:
+    enabled: true
+    description: Number of active subscriptions on the NATS server.
+    stability: development
+    unit: "{subscriptions}"
+    gauge:
+      value_type: int
+
+tests:
+  config:
+    scrapers: []

@@ -1,0 +1,125 @@
+default:
+all_set:
+  metrics:
+    nats.account.bytes.received:
+      enabled: true
+    nats.account.bytes.sent:
+      enabled: true
+    nats.account.connections:
+      enabled: true
+    nats.account.leaf_nodes:
+      enabled: true
+    nats.account.messages.received:
+      enabled: true
+    nats.account.messages.sent:
+      enabled: true
+    nats.account.slow_consumers:
+      enabled: true
+    nats.account.subscriptions:
+      enabled: true
+    nats.connection.count:
+      enabled: true
+    nats.jetstream.api.calls:
+      enabled: true
+    nats.jetstream.api.errors:
+      enabled: true
+    nats.jetstream.bytes:
+      enabled: true
+    nats.jetstream.consumers:
+      enabled: true
+    nats.jetstream.memory.reserved:
+      enabled: true
+    nats.jetstream.messages:
+      enabled: true
+    nats.jetstream.storage.reserved:
+      enabled: true
+    nats.jetstream.streams:
+      enabled: true
+    nats.server.bytes.received:
+      enabled: true
+    nats.server.bytes.sent:
+      enabled: true
+    nats.server.connections:
+      enabled: true
+    nats.server.connections.total:
+      enabled: true
+    nats.server.cpu:
+      enabled: true
+    nats.server.leaf_nodes:
+      enabled: true
+    nats.server.max_connections:
+      enabled: true
+    nats.server.memory:
+      enabled: true
+    nats.server.messages.received:
+      enabled: true
+    nats.server.messages.sent:
+      enabled: true
+    nats.server.routes:
+      enabled: true
+    nats.server.slow_consumers:
+      enabled: true
+    nats.server.subscriptions:
+      enabled: true
+none_set:
+  metrics:
+    nats.account.bytes.received:
+      enabled: false
+    nats.account.bytes.sent:
+      enabled: false
+    nats.account.connections:
+      enabled: false
+    nats.account.leaf_nodes:
+      enabled: false
+    nats.account.messages.received:
+      enabled: false
+    nats.account.messages.sent:
+      enabled: false
+    nats.account.slow_consumers:
+      enabled: false
+    nats.account.subscriptions:
+      enabled: false
+    nats.connection.count:
+      enabled: false
+    nats.jetstream.api.calls:
+      enabled: false
+    nats.jetstream.api.errors:
+      enabled: false
+    nats.jetstream.bytes:
+      enabled: false
+    nats.jetstream.consumers:
+      enabled: false
+    nats.jetstream.memory.reserved:
+      enabled: false
+    nats.jetstream.messages:
+      enabled: false
+    nats.jetstream.storage.reserved:
+      enabled: false
+    nats.jetstream.streams:
+      enabled: false
+    nats.server.bytes.received:
+      enabled: false
+    nats.server.bytes.sent:
+      enabled: false
+    nats.server.connections:
+      enabled: false
+    nats.server.connections.total:
+      enabled: false
+    nats.server.cpu:
+      enabled: false
+    nats.server.leaf_nodes:
+      enabled: false
+    nats.server.max_connections:
+      enabled: false
+    nats.server.memory:
+      enabled: false
+    nats.server.messages.received:
+      enabled: false
+    nats.server.messages.sent:
+      enabled: false
+    nats.server.routes:
+      enabled: false
+    nats.server.slow_consumers:
+      enabled: false
+    nats.server.subscriptions:
+      enabled: false

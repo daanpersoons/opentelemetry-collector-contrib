@@ -1,0 +1,8 @@
+natsmetrics:
+  endpoint: http://localhost:8222
+  scrapers:
+    - server
+    - connections
+    - jetstream
+    - accounts
+  collection_interval: 30s
